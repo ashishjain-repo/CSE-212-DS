@@ -12,8 +12,15 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        double numVar = 1;
+        double[] doublesArr = new double[length];
+        for(int i = 0; i < length; i++)
+        {
+            doublesArr[i] = number * numVar;
+            numVar++;
+        };
 
-        return []; // replace this return statement with your own
+        return doublesArr; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +36,16 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        int length = data.Count - amount;
+        List<int> tempData = new List<int>();
+        for(int i = 0; i < length; i++)
+        {
+            tempData.Add(data[0]);
+            data.RemoveAt(0);
+        };
+        foreach(int i in tempData)
+        {
+            data.Add(i);
+        };
     }
 }
