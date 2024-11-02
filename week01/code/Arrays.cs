@@ -6,6 +6,12 @@ public static class Arrays
     /// integer greater than 0.
     /// </summary>
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
+    /// 
+/*
+Plan for MultiplesOf
+
+I read what needs to be done to get the desired results. To do that I created a starting point so the initial multiplication with the number 1 so the result will be itself. I created an array with the length of the multiples required. Created a for loop from 0 so the one less number of length because the first position starts with 0. Then I added the multiple in the array by multiplying with the initial multiple and on every iteration I increased that multiple by one. After the iteration was finished I returned that array.
+*/
     public static double[] MultiplesOf(double number, int length)
     {
         // TODO Problem 1 Start
@@ -22,6 +28,7 @@ public static class Arrays
 
         return doublesArr; // replace this return statement with your own
     }
+
 
     /// <summary>
     /// Rotate the 'data' to the right by the 'amount'.  For example, if the data is 
