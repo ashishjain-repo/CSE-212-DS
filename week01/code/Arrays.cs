@@ -37,6 +37,12 @@ I read what needs to be done to get the desired results. To do that I created a 
     ///
     /// Because a list is dynamic, this function will modify the existing data list rather than returning a new list.
     /// </summary>
+    /// 
+/* 
+Plan for RotateListRight
+
+To solve this problem, I created a variable that holds the total number of iterations which is the provided list subtracting the total number that needs to be moved. Then each iteration adds the first element to the temp list removes the first element from the original list, and leaves the original list with only the number of elements passed in the function as an amount. Then I created a for each loop on the temporary list, and added those removed elements back in the list, so this way the original list is edited instead of returning a new list.
+*/
     public static void RotateListRight(List<int> data, int amount)
     {
         // TODO Problem 2 Start
