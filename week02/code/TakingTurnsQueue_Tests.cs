@@ -12,6 +12,9 @@ public class TakingTurnsQueueTests
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
     // Defect(s) Found: 
+    /* 
+    - The Enque function was adding the elements on the first position rather than adding them last.
+     */
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
@@ -86,6 +89,9 @@ public class TakingTurnsQueueTests
     // Run 10 times.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
     // Defect(s) Found: 
+    /* 
+    - In the function nextPerson there was not mention of what happens when the turn in zero so implemented another enque using else if condition.
+     */
     public void TestTakingTurnsQueue_ForeverZero()
     {
         var timTurns = 0;
@@ -117,6 +123,9 @@ public class TakingTurnsQueueTests
     // Run 10 times.
     // Expected Result: Tim, Sue, Tim, Sue, Tim, Sue, Tim, Tim, Tim, Tim
     // Defect(s) Found: 
+    /* 
+    SInce I have already made a condition on zero, but there was not for negative numbers which are infinite tries, so I enqued it in the same condition using ||
+     */
     public void TestTakingTurnsQueue_ForeverNegative()
     {
         var timTurns = -3;
@@ -164,8 +173,7 @@ public class TakingTurnsQueueTests
         catch (Exception e)
         {
             Assert.Fail(
-                 string.Format("Unexpected exception of type {0} caught: {1}",
-                                e.GetType(), e.Message)
+                string.Format("Unexpected exception of type {0} caught: {1}",e.GetType(), e.Message)
             );
         }
     }
