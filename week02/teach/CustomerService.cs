@@ -16,7 +16,9 @@ public class CustomerService {
         Console.WriteLine("Test 1");
 
         // Defect(s) Found: 
-
+        var customerService = new CustomerService(4);
+        customerService.AddNewCustomer();
+        customerService.ServeCustomer();
         Console.WriteLine("=================");
 
         // Test 2
@@ -88,8 +90,12 @@ public class CustomerService {
     /// Dequeue the next customer and display the information.
     /// </summary>
     private void ServeCustomer() {
-        _queue.RemoveAt(0);
+        if(_queue.Count <= 0) 
+        {
+            Console.WriteLine("Empty, cannot remove");
+        }
         var customer = _queue[0];
+        _queue.RemoveAt(0);
         Console.WriteLine(customer);
     }
 

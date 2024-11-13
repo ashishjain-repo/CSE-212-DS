@@ -1,26 +1,43 @@
 using System;
+using System.Collections.Generic;
 
+public class RoundRobinScheduler<T>
+{
+    private Queue<T> tasks = new Queue<T>();
+
+    // Adds a task to the scheduler
+    public void AddTask(T task)
+    {
+        tasks.Enqueue(task);
+    }
+
+    // Returns the next task in line, and moves it to the back of the queue
+    public T GetNextTask()
+    {
+        if (tasks.Count == 0)
+        {
+            throw new InvalidOperationException("No tasks in the scheduler.");
+        }
+
+        T task = tasks.Dequeue();
+        tasks.Enqueue(task);  // Move the task to the back of the queue
+        return task;
+    }
+}
+
+// Usage
 public class Program
 {
-    private static List<int> FindDivisors(int number) {
-        List<int> results = new();
-        // TODO problem 1
-        for(int index = 1; index < number; index++)
-        {
-            if(number % index == 0)
-            {
-                results.Add(index);
-            };
-        };
-        return results;
-    }
-    static void Main(string[] args)
+    public static void Main()
     {
-        // This project is here for you to use as a "Sandbox" to play around
-        // with any code or ideas you have that do not directly apply to
-        // one of your projects.
+        RoundRobinScheduler<string> scheduler = new RoundRobinScheduler<string>();
+        scheduler.AddTask("Task 1");
+        scheduler.AddTask("Task 2");
+        scheduler.AddTask("Task 3");
 
-        List<int> divisors = FindDivisors(79);
-        Console.WriteLine(string.Join(", ", divisors));
+        for (int i = 0; i < 6; i++) // Run for two full cycles
+        {
+            Console.WriteLine("Next Task: " + scheduler.GetNextTask());
+        }
     }
 }
