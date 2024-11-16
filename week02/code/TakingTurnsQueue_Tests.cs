@@ -46,7 +46,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3)
     // After running 5 times, add George with 3 turns.  Run until the queue is empty.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, George, Sue, Tim, George, Tim, George
-    // Defect(s) Found: 
+    // Defect(s) Found: The test was failing because after George was added, the expected turn sequence was incorrect due to a missing check in the queue logic that needed to account for dynamic player additions.
     public void TestTakingTurnsQueue_AddPlayerMidway()
     {
         var bob = new Person("Bob", 2);
@@ -152,7 +152,7 @@ public class TakingTurnsQueueTests
     [TestMethod]
     // Scenario: Try to get the next person from an empty queue
     // Expected Result: Exception should be thrown with appropriate error message.
-    // Defect(s) Found: 
+    // Defect(s) Found: The issue was fixed by adding an exception check in the GetNextPerson method to properly throw an InvalidOperationException when the queue is empty.
     public void TestTakingTurnsQueue_Empty()
     {
         var players = new TakingTurnsQueue();

@@ -45,8 +45,11 @@ public class PriorityQueueTests
 
     [TestMethod]
     // Scenario: 
-    // Expected Result: 
+    // Expected Result: ["Task5", "Task2", "Task4", "Task6", "Task3", "Task1"]
     // Defect(s) Found: 
+    /*
+        - The queue was not correctly handling multiple items with the same priority
+    */
     public void TestPriorityQueue_2()
     {
         var priorityQueue = new PriorityQueue();
@@ -88,8 +91,11 @@ public class PriorityQueueTests
     // Add more test cases as needed below.
     [TestMethod]
     // Scenario: 
-    // Expected Result: 
+    // Expected Result: ["Task5", "Task2", "Task6", "Task3", "Task1", "Task4"]
     // Defect(s) Found: 
+    /*
+        - Adjusted logic to handle priority 0 tasks correctly, ensuring they are dequeued last.
+    */
     public void TestPriorityQueue3()
     {
         int queue4Priority = 0;
