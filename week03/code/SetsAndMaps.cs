@@ -1,5 +1,5 @@
 using System.Text.Json;
-
+using System.Text;
 public static class SetsAndMaps
 {
     /// <summary>
@@ -30,7 +30,7 @@ public static class SetsAndMaps
             char[] characters = word.ToCharArray();
             Array.Reverse(characters);
             string reversed = new string(characters);
-            if(word == reversed)
+            if (word == reversed)
             {
                 continue;
             }
@@ -62,9 +62,9 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
-            if(degrees.ContainsKey(fields[3]))
+            if (degrees.ContainsKey(fields[3]))
             {
-                degrees[fields[3]] ++;
+                degrees[fields[3]]++;
             }
             else
             {
@@ -93,44 +93,27 @@ public static class SetsAndMaps
     /// </summary>
     public static string OrderedNoSpace(string word)
     {
-        string temp = "";
-        foreach(char c in word.ToLower())
+        StringBuilder temp = new StringBuilder();
+        foreach (char c in word.ToLower())
         {
-            if(c.ToString() == " ")
-            {
-                continue;
-            }
-            temp+=c;
+            if (c != ' ') temp.Append(c);
         }
-        char[] character = temp.ToCharArray();
-        for(int i = 0; i < character.Length - 1; i++)
-        {
-            for(int j = 0; j < character.Length - i - 1; j++)
-            {
-                if((int)character[j] > character[j + 1])
-                {
-                    char temporary = character[j];
-                    character[j] = character[j + 1];
-                    character[j + 1] = temporary;
-
-                }
-            }
-        }
-        string orderSorted = new string(character);
-        return orderSorted;
+        char[] characterArray = temp.ToString().ToCharArray();
+        Array.Sort(characterArray);
+        return new string(characterArray);
     }
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        
+
         string sorted1 = new string(OrderedNoSpace(word1));
         string sorted2 = new string(OrderedNoSpace(word2));
-        Dictionary<string, string> words = new Dictionary<string, string>() 
+        Dictionary<string, string> words = new Dictionary<string, string>()
         {
             {"word1",sorted1},
             {"word2",sorted2}
         };
-        if(words["word1"] == words["word2"])
+        if (words["word1"] == words["word2"])
         {
             return true;
         }
